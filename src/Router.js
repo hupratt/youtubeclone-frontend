@@ -45,6 +45,7 @@ const AppRouter = () => (
         <Route path="/feed/my_videos" component={YourVideos} />
         <Route path="/feed/liked_videos" component={LikedVideos} />
         <Route path="/" component={Home} />
+        <Redirect to="/" />
       </Switch>
     </Container>
   </Router>
