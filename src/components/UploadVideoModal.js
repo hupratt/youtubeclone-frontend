@@ -125,7 +125,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const UploadVideoModal = ({ previewVideo, closeModal, url, thumbnail }) => {
+const UploadVideoModal = ({ previewVideo, closeModal, url }) => {
   const dispatch = useDispatch();
   const { data: user } = useSelector((state) => state.user);
 
@@ -145,7 +145,6 @@ const UploadVideoModal = ({ previewVideo, closeModal, url, thumbnail }) => {
         title: title.value,
         description: description.value,
         url,
-        thumbnail,
       };
 
       const { data: video } = await client(

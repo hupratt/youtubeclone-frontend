@@ -43,7 +43,7 @@ const Wrapper = styled.div`
 const VideoCard = ({ nousername, hideavatar, video }) => {
   return (
     <Wrapper>
-      <img className="thumb" src={`${process.env.REACT_APP_BE}/videos/thumbnail/${video.thumbnail}`} alt="thumbnail" />
+      <img className="thumb" src={`${process.env.REACT_APP_BE}/videos/uploads/${video.thumbnail}`} alt="thumbnail" />
       <div className="video-info-container">
         <div className="channel-avatar">
           {!hideavatar && (

@@ -6,11 +6,15 @@ export const client = async (endpoint, { body, ...customConfig } = {}) => {
 
   const config = {
     method: body ? "POST" : "GET",
-    ...customConfig,
+    
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
     },
+    ...customConfig,
   };
 
   if (body) {

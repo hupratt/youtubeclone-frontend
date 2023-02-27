@@ -17,7 +17,7 @@ const Player = ({ previewUrl }) => {
 
     if (!previewUrl) {
       vjsPlayer.poster(poster);
-      vjsPlayer.src(src);
+      vjsPlayer.src(`${process.env.REACT_APP_VIDEOS}/${src}`);
     }
 
     if (previewUrl) {
