@@ -69,11 +69,16 @@ export const timeSince = (timestamp) => {
 
 export const upload = async (resourceType, file) => {
   const formData = new FormData();
-  formData.append("upload_preset", "youtubeclone");
   formData.append("file", file);
 
   let toastId = null;
+  const token = JSON.parse(localStorage.getItem("user")).token;
   const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: `Bearer ${token}`
+    },
     onUploadProgress: (p) => {
       const progress = p.loaded / p.total;
       if (toastId === null) {
@@ -87,13 +92,12 @@ export const upload = async (resourceType, file) => {
       }
     },
   };
-
   const { data } = await axios.post(
-    `${process.env.REACT_APP_CLOUDINARY_ENDPOINT}/${resourceType}/upload`,
+    `${process.env.REACT_APP_VIDEOS}/upload`,
     formData,
     config
-  );
-
+    );
+    
   toast.dismiss(toastId);
 
   return data.secure_url;

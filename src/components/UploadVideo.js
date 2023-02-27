@@ -19,10 +19,6 @@ const UploadVideo = () => {
     if (file) {
       const size = file.size / 1000000;
 
-      if (size > 30) {
-        return toast.error("Sorry, file size should be less than 30MB");
-      }
-
       const url = URL.createObjectURL(file);
       setPreviewVideo(url);
       setShowModal(true);
@@ -30,8 +26,6 @@ const UploadVideo = () => {
       const data = await upload("video", file);
       setUrl(data);
 
-      const ext = path.extname(data);
-      setThumbnail(data.replace(ext, ".jpg"));
     }
   };
 
@@ -44,6 +38,7 @@ const UploadVideo = () => {
         style={{ display: "none" }}
         id="video-upload"
         type="file"
+        name="file"
         accept="video/*"
         onChange={handleVideoUpload}
       />
