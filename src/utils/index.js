@@ -10,7 +10,7 @@ export const client = async (endpoint, { body, ...customConfig } = {}) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "http://localhost:5001",
       "Access-Control-Allow-Methods": "GET, POST",
       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
     },
