@@ -74,7 +74,7 @@ const Wrapper = styled.div`
 const TrendingCard = ({ video }) => {
   return (
     <Wrapper>
-      <img className="thumb" src={`${process.env.REACT_APP_BE}/videos/uploads/${video.thumbnail}`} alt="thumbnail" />
+      <img className="thumb" src={`${process.env.REACT_APP_BASE}/static/uploads/${video.thumbnail}`} alt="thumbnail" />
       <div className="video-info-container">
         <h3>{video.title}</h3>
         <p className="secondary">

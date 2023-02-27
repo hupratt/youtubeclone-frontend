@@ -15,9 +15,10 @@ const Player = ({ previewUrl }) => {
   useEffect(() => {
     const vjsPlayer = videojs(videoRef.current);
 
+
     if (!previewUrl) {
       vjsPlayer.poster(poster);
-      vjsPlayer.src(`${process.env.REACT_APP_VIDEOS}/${src}`);
+      vjsPlayer.src(`${process.env.REACT_APP_BASE}/static/${src}`);
     }
 
     if (previewUrl) {
