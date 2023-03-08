@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import VideoCard from "../components/VideoCard";
+import FakeVideoCard from "../components/FakeVideoCard";
 import Skeleton from "../skeletons/HomeSkeleton";
 import VideoGrid from "../styles/VideoGrid";
 import { getRecommendation } from "../reducers/recommendation";
@@ -50,16 +51,17 @@ const Home = () => {
     dispatch(getRecommendation());
   }, [dispatch]);
 
-  if (isFetching) {
-    return <Skeleton title={true} />;
-  }
 
   return (
     <StyledHome>
       <h2>Recommended</h2>
 
       <VideoGrid>
-        {!isFetching &&
+        {isFetching ? ([...Array(12).keys()].map((id) => (
+            <Link key={id}>
+              <FakeVideoCard />
+            </Link>
+          ))):
           videos.map((video) => (
             <Link key={video.id} to={`/watch/${video.id}`}>
               <VideoCard video={video} />
