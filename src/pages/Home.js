@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import VideoCard from "../components/VideoCard";
 import FakeVideoCard from "../components/FakeVideoCard";
-import Skeleton from "../skeletons/HomeSkeleton";
 import VideoGrid from "../styles/VideoGrid";
 import { getRecommendation } from "../reducers/recommendation";
 
@@ -58,9 +57,9 @@ const Home = () => {
 
       <VideoGrid>
         {isFetching ? ([...Array(12).keys()].map((id) => (
-            <Link key={id}>
+            <a key={id} href="/">
               <FakeVideoCard />
-            </Link>
+            </a>
           ))):
           videos.map((video) => (
             <Link key={video.id} to={`/watch/${video.id}`}>

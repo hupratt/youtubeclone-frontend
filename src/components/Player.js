@@ -18,7 +18,7 @@ const Player = ({ previewUrl }) => {
 
     if (!previewUrl) {
       vjsPlayer.poster(poster);
-      vjsPlayer.src(`${process.env.REACT_APP_BASE}/static/${src}`);
+      vjsPlayer.src(`${process.env.REACT_APP_BASE}/${src}`);
     }
 
     if (previewUrl) {

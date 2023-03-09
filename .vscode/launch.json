@@ -6,7 +6,7 @@
             "port": 9222,
             "request": "attach",
             "type": "chrome",
-            "urlFilter": "http://localhost:3001/*",
+            "urlFilter": "http://localhost:3002/*",
             "webRoot": "${workspaceFolder}"
         },
         {
