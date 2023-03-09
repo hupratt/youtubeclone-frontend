@@ -13,6 +13,8 @@ const Player = ({ previewUrl }) => {
   );
 
   useEffect(() => {
+    console.log('=== src Player.js [16] ===', src);
+    console.log('=== `${process.env.REACT_APP_BASE}/${src}` Player.js [18] ===', `${process.env.REACT_APP_BASE}/${src}`);
     const vjsPlayer = videojs(videoRef.current);
 
 
@@ -25,7 +27,7 @@ const Player = ({ previewUrl }) => {
       vjsPlayer.src({ type: "video/mp4", src: previewUrl });
     }
 
-    vjsPlayer.on("ended", () => {
+    vjsPlayer.on("click", () => {
       client(`${process.env.REACT_APP_BE}/videos/${videoId}/view`);
     });
 
