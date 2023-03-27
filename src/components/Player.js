@@ -8,15 +8,17 @@ const Player = ({ previewUrl }) => {
   const videoRef = useRef(null);
 
   const dispatch = useDispatch();
-  const { id: videoId, url: src, thumb: poster } = useSelector(
-    (state) => state.video.data
-  );
+  const {
+    id: videoId,
+    url: src,
+    thumb: poster,
+  } = useSelector((state) => state.video.data);
+  const { token } = useSelector((state) => state.user.data);
 
   useEffect(() => {
-    console.log('=== src Player.js [16] ===', src);
-    console.log('=== `${process.env.REACT_APP_BASE}/${src}` Player.js [18] ===', `${process.env.REACT_APP_BASE}/${src}`);
+    // console.log('=== src Player.js [16] ===', src);
+    // console.log('=== `${process.env.REACT_APP_BASE}/${src}` Player.js [18] ===', `${process.env.REACT_APP_BASE}/${src}`);
     const vjsPlayer = videojs(videoRef.current);
-
 
     if (!previewUrl) {
       vjsPlayer.poster(poster);
@@ -28,7 +30,11 @@ const Player = ({ previewUrl }) => {
     }
 
     vjsPlayer.on("click", () => {
-      client(`${process.env.REACT_APP_BE}/videos/${videoId}/view`);
+      console.log('=== token Player.js [33] ===', token);
+      token &&
+        setTimeout(function () {
+          client(`${process.env.REACT_APP_BE}/videos/${videoId}/view`);
+        }, 15000);
     });
 
     return () => {

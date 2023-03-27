@@ -1,16 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ToastContainer } from "react-toastify";
 import GlobalStyle from "./styles/GlobalStyle";
 import { darkTheme } from "./styles/theme";
 import Router from "./Router";
+import WatchVideo from "./pages/WatchVideo";
+import WatchVideoNoAuth from "./pages/WatchVideoNoAuth";
 import Auth from "./components/Auth";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const { token } = useSelector((state) => state.user.data);
-
   return (
     <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
@@ -19,7 +21,7 @@ const App = () => {
         position="top-right"
         closeButton={false}
       />
-      {token ? <Router /> : <Auth />}
+      {token ? <Router /> : (true ? <WatchVideoNoAuth/> : <Auth />)}
     </ThemeProvider>
   );
 };
