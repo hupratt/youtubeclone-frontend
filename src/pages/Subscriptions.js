@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Suggestions from "../components/Suggestions";
 import VideoCard from "../components/VideoCard";
+import NoResults from "../components/NoResults";
 import { StyledHome } from "./Home";
 import VideoGrid from "../styles/VideoGrid";
 import Skeleton from "../skeletons/HomeSkeleton";
@@ -20,7 +21,7 @@ const Subscriptions = () => {
     return <Skeleton />;
   }
 
-  if (!isFetching && !videos.length) {
+  if (!isFetching && !videos?.length) {
     return <Suggestions />;
   }
 

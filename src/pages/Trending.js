@@ -6,6 +6,7 @@ import TrendingCard from "../components/TrendingCard";
 import Skeleton from "../skeletons/TrendingSkeleton";
 import { getTrending } from "../reducers/trending";
 
+
 export const StyledTrending = styled.div`
   padding: 1rem 1.3rem;
   width: 85%;
@@ -26,6 +27,7 @@ export const StyledTrending = styled.div`
 const Trending = () => {
   const dispatch = useDispatch();
   const { isFetching, videos } = useSelector((state) => state.trending);
+  const { token } = useSelector((state) => state.user.data);
 
   useEffect(() => {
     dispatch(getTrending());
@@ -40,7 +42,7 @@ const Trending = () => {
       <h2>Trending</h2>
 
       <div className="trending">
-        {!isFetching &&
+        {!isFetching && token &&
           videos.map((video) => (
             <Link to={`/watch/${video.id}`} key={video.id}>
               <TrendingCard video={video} />

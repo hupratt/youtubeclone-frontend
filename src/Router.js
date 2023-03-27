@@ -26,6 +26,8 @@ import Library from "./pages/Library";
 import History from "./pages/History";
 import YourVideos from "./pages/YourVideos";
 import LikedVideos from "./pages/LikedVideos";
+import Auth from "./components/Auth";
+
 
 const AppRouter = () => (
   <Router>
@@ -44,8 +46,8 @@ const AppRouter = () => (
         <Route path="/feed/history" component={History} />
         <Route path="/feed/my_videos" component={YourVideos} />
         <Route path="/feed/liked_videos" component={LikedVideos} />
-        <Route path="/" component={Home} />
-        <Redirect to="/" />
+        <Route path="/" component={Auth} />
+        <Redirect to="/"/>
       </Switch>
     </Container>
   </Router>

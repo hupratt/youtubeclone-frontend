@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { UploadIcon } from "./Icons";
 import UploadVideoModal from "./UploadVideoModal";
 import { upload } from "../utils";
+import {  useSelector } from "react-redux";
 
 const UploadVideo = () => {
   const [showModal, setShowModal] = useState(false);
   const [previewVideo, setPreviewVideo] = useState("");
   const closeModal = () => setShowModal(false);
+  const { profile } = useSelector((state) => state.profile);
 
   const [url, setUrl] = useState("");
 
@@ -25,6 +27,7 @@ const UploadVideo = () => {
   };
 
   return (
+    profile ?
     <div>
       <label htmlFor="video-upload">
         <UploadIcon />
@@ -44,7 +47,7 @@ const UploadVideo = () => {
           url={url}
         />
       )}
-    </div>
+    </div>:<></>
   );
 };
 
