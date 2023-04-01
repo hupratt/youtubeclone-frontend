@@ -28,6 +28,7 @@ export const client = async (endpoint, { body, ...customConfig } = {}) => {
   if (!customConfig.token && user?.token) {
     config.headers.authorization = `Bearer ${user.token}`;
     config.headers.userId = `${user.id}`;
+    config.headers.user = localStorage.getItem("user");
   }
 
   const res = await fetch(endpoint, config);

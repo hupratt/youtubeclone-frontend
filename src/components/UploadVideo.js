@@ -8,7 +8,7 @@ const UploadVideo = () => {
   const [showModal, setShowModal] = useState(false);
   const [previewVideo, setPreviewVideo] = useState("");
   const closeModal = () => setShowModal(false);
-  const { profile } = useSelector((state) => state.profile);
+  const { token } = useSelector((state) => state.user.data);
 
   const [url, setUrl] = useState("");
 
@@ -27,7 +27,7 @@ const UploadVideo = () => {
   };
 
   return (
-    profile ?
+    token ?
     <div>
       <label htmlFor="video-upload">
         <UploadIcon />

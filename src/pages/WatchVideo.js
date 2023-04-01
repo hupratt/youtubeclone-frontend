@@ -137,7 +137,7 @@ const WatchVideo = () => {
   const { isFetching: recommendationFetching, videos: next } = useSelector(
     (state) => state.recommendation
   );
-
+    console.log('=== video WatchVideo.js [140] ===', video);
   const handleLike = () => {
     if (video.isLiked) {
       dispatch(cancelLike());
