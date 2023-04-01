@@ -10,13 +10,15 @@ import { getLikedVideos } from "../reducers/likedVideo";
 const LikedVideos = () => {
   const dispatch = useDispatch();
   const { isFetching, videos } = useSelector((state) => state.likedVideo);
-  const { profile } = useSelector((state) => state.profile);
+  const { token } = useSelector((state) => state.user.data);
 
   useEffect(() => {
     dispatch(getLikedVideos());
   }, [dispatch]);
-
-  if (!isFetching && !profile) {
+  if (isFetching) {
+    return <Skeleton />;
+  }
+  if (token===undefined) {
     return (
       <NoResults
         title="Page not found"
@@ -28,7 +30,6 @@ const LikedVideos = () => {
   if (isFetching) {
     return <Skeleton />;
   }
-
   return (
     <StyledTrending>
       <h2>Liked Videos</h2>

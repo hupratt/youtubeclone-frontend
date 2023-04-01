@@ -10,6 +10,7 @@ import { getHistory } from "../reducers/history";
 const History = ({ nopad }) => {
   const dispatch = useDispatch();
   const { isFetching, videos, data: profile } = useSelector((state) => state.history);
+  const { token } = useSelector((state) => state.user.data);
 
   useEffect(() => {
     dispatch(getHistory());
@@ -18,7 +19,7 @@ const History = ({ nopad }) => {
   if (isFetching) {
     return <Skeleton />;
   }
-  if (!isFetching && !profile) {
+  if (token===undefined) {
     return (
       <NoResults
         title="Page not found"

@@ -28,13 +28,11 @@ const Player = ({ previewUrl }) => {
     if (previewUrl) {
       vjsPlayer.src({ type: "video/mp4", src: previewUrl });
     }
-
     vjsPlayer.on("click", () => {
-      console.log('=== token Player.js [33] ===', token);
-      token &&
+      token && 
         setTimeout(function () {
           client(`${process.env.REACT_APP_BE}/videos/${videoId}/view`);
-        }, 15000);
+        }, 30000);
     });
 
     return () => {
